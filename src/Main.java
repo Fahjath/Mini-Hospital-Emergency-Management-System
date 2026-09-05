@@ -161,8 +161,7 @@ public class Main {
                             "\n--- Treat Next Emergency Patient ---"
                     );
 
-                    Patient nextPatient =
-                            emergencyQueue.dequeue();
+                    Patient nextPatient = emergencyQueue.dequeue();
 
                     if (nextPatient != null) {
 
@@ -265,6 +264,63 @@ public class Main {
                     );
 
                     treatmentStack.displayStack();
+
+                    break;
+                }
+
+                case 11: {
+
+                    System.out.println(
+                            "\n--- Add Patient Visit ---"
+                    );
+
+                    System.out.print("Enter Patient ID: ");
+                    int visitPatientId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    Patient visitPatient =
+                            patientBST.search(visitPatientId);
+
+                    if (visitPatient == null) {
+
+                        System.out.println(
+                                "Patient not found. Please register the patient first."
+                        );
+
+                        break;
+                    }
+
+                    System.out.print("Enter Visit ID: ");
+                    int visitId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    System.out.print("Enter Visit Date: ");
+                    String visitDate = scanner.nextLine();
+
+                    System.out.print("Enter Doctor Name: ");
+                    String visitDoctorName = scanner.nextLine();
+
+                    System.out.print("Enter Diagnosis: ");
+                    String diagnosis = scanner.nextLine();
+
+                    System.out.print("Enter Treatment: ");
+                    String visitTreatment = scanner.nextLine();
+
+                    Visit newVisit = new Visit(
+                            visitId,
+                            visitDate,
+                            visitDoctorName,
+                            diagnosis,
+                            visitTreatment
+                    );
+
+                    visitPatient
+                            .getVisitHistory()
+                            .addVisit(newVisit);
+
+                    System.out.println(
+                            "Patient visit recorded successfully."
+                    );
 
                     break;
                 }
