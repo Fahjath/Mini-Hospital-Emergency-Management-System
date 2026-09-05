@@ -180,5 +180,10 @@ public class Main {
         } else {
             System.out.println("Visit removal failed.");
         }
+
+
+        // ---------------- DISPLAY VISIT HISTORY TEST ----------------
+
+        p1.getVisitHistory().displayVisits();
     }
 }

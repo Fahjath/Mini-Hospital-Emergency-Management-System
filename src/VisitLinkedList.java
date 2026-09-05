@@ -88,4 +88,28 @@ public class VisitLinkedList {
         System.out.println("Visit not found.");
         return false;
     }
+
+    // Display all visits in the patient's history
+    public void displayVisits() {
+
+        if (head == null) {
+            System.out.println("Visit history is empty.");
+            return;
+        }
+
+        System.out.println("\nPatient Visit History:");
+
+        VisitNode current = head;
+        int number = 1;
+
+        while (current != null) {
+
+            System.out.println(
+                    number + ". " + current.visit
+            );
+
+            current = current.next;
+            number++;
+        }
+    }
 }
