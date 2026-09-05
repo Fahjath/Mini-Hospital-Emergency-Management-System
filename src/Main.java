@@ -2,10 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Create Binary Search Tree
-        PatientBST patientBST = new PatientBST();
+        // ---------------- CREATE SAMPLE PATIENTS ----------------
 
-        // Create sample patients
         Patient p1 = new Patient(
                 1005,
                 "John Silva",
@@ -30,16 +28,17 @@ public class Main {
                 "Injury"
         );
 
+
         // ---------------- BST TEST ----------------
 
-        // Insert patients into BST
+        PatientBST patientBST = new PatientBST();
+
         patientBST.insert(p1);
         patientBST.insert(p2);
         patientBST.insert(p3);
 
         System.out.println("Patients inserted successfully.");
 
-        // Search patient by Patient ID
         Patient foundPatient = patientBST.search(1002);
 
         if (foundPatient != null) {
@@ -49,7 +48,6 @@ public class Main {
             System.out.println("\nPatient not found.");
         }
 
-        // Display patients in ascending Patient ID order
         patientBST.displayInOrder();
 
 
@@ -59,16 +57,14 @@ public class Main {
 
         System.out.println("\nEmergency Queue Test:");
 
-        // Enqueue patients
         emergencyQueue.enqueue(p1);
         emergencyQueue.enqueue(p2);
         emergencyQueue.enqueue(p3);
 
-        // Dequeue first patient
         System.out.println("\nCalling next patient for treatment:");
+
         emergencyQueue.dequeue();
 
-        // Display remaining patients
         emergencyQueue.displayQueue();
 
 
@@ -76,11 +72,45 @@ public class Main {
 
         System.out.println("\nEmpty Queue Test:");
 
-        // Remove remaining patients
         emergencyQueue.dequeue();
         emergencyQueue.dequeue();
 
-        // Try to remove from an empty queue
+        // Trying dequeue when queue is empty
         emergencyQueue.dequeue();
+
+
+        // ---------------- TREATMENT STACK TEST ----------------
+
+        TreatmentStack treatmentStack = new TreatmentStack();
+
+        TreatmentRecord t1 = new TreatmentRecord(
+                1,
+                1005,
+                "John Silva",
+                "Dr. Perera",
+                "ECG Examination"
+        );
+
+        TreatmentRecord t2 = new TreatmentRecord(
+                2,
+                1002,
+                "Mary Perera",
+                "Dr. Fernando",
+                "Fever Medication"
+        );
+
+        TreatmentRecord t3 = new TreatmentRecord(
+                3,
+                1008,
+                "David Fernando",
+                "Dr. Silva",
+                "Wound Dressing"
+        );
+
+        System.out.println("\nTreatment Stack Test:");
+
+        treatmentStack.push(t1);
+        treatmentStack.push(t2);
+        treatmentStack.push(t3);
     }
 }
