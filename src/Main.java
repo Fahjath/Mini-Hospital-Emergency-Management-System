@@ -118,9 +118,7 @@ public class Main {
 
                     } else {
 
-                        System.out.println(
-                                "Patient not found."
-                        );
+                        System.out.println("Patient not found.");
                     }
 
                     break;
@@ -131,6 +129,31 @@ public class Main {
                     System.out.println("\n--- Display All Patients ---");
 
                     patientBST.displayInOrder();
+
+                    break;
+
+
+                case 5:
+
+                    System.out.println("\n--- Add Patient to Emergency Queue ---");
+
+                    System.out.print("Enter Patient ID: ");
+                    int emergencyPatientId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    Patient emergencyPatient =
+                            patientBST.search(emergencyPatientId);
+
+                    if (emergencyPatient != null) {
+
+                        emergencyQueue.enqueue(emergencyPatient);
+
+                    } else {
+
+                        System.out.println(
+                                "Patient not found. Please register the patient first."
+                        );
+                    }
 
                     break;
 
