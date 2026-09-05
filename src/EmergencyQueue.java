@@ -27,7 +27,7 @@ public class EmergencyQueue {
         );
     }
 
-    // Remove the next patient from the emergency queue
+    // Remove the next patient for treatment
     public Patient dequeue() {
 
         if (front == null) {
@@ -49,5 +49,29 @@ public class EmergencyQueue {
         );
 
         return patientToTreat;
+    }
+
+    // Display all patients currently waiting
+    public void displayQueue() {
+
+        if (front == null) {
+            System.out.println("Emergency queue is empty.");
+            return;
+        }
+
+        System.out.println("\nPatients currently waiting:");
+
+        QueueNode current = front;
+        int position = 1;
+
+        while (current != null) {
+
+            System.out.println(
+                    position + ". " + current.patient
+            );
+
+            current = current.next;
+            position++;
+        }
     }
 }

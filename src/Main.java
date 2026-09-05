@@ -30,6 +30,8 @@ public class Main {
                 "Injury"
         );
 
+        // ---------------- BST TEST ----------------
+
         // Insert patients into BST
         patientBST.insert(p1);
         patientBST.insert(p2);
@@ -37,7 +39,7 @@ public class Main {
 
         System.out.println("Patients inserted successfully.");
 
-        // Search patient
+        // Search patient by Patient ID
         Patient foundPatient = patientBST.search(1002);
 
         if (foundPatient != null) {
@@ -50,18 +52,35 @@ public class Main {
         // Display patients in ascending Patient ID order
         patientBST.displayInOrder();
 
-        // Create Emergency Queue
+
+        // ---------------- EMERGENCY QUEUE TEST ----------------
+
         EmergencyQueue emergencyQueue = new EmergencyQueue();
 
         System.out.println("\nEmergency Queue Test:");
 
-        // Add patients to queue
+        // Enqueue patients
         emergencyQueue.enqueue(p1);
         emergencyQueue.enqueue(p2);
         emergencyQueue.enqueue(p3);
 
-        // Remove next patient for treatment
+        // Dequeue first patient
         System.out.println("\nCalling next patient for treatment:");
+        emergencyQueue.dequeue();
+
+        // Display remaining patients
+        emergencyQueue.displayQueue();
+
+
+        // ---------------- EMPTY QUEUE TEST ----------------
+
+        System.out.println("\nEmpty Queue Test:");
+
+        // Remove remaining patients
+        emergencyQueue.dequeue();
+        emergencyQueue.dequeue();
+
+        // Try to remove from an empty queue
         emergencyQueue.dequeue();
     }
 }
