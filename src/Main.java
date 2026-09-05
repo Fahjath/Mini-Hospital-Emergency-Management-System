@@ -48,15 +48,13 @@ public class Main {
                     System.out.println("\n--- Register New Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int patientId =
-                            Integer.parseInt(scanner.nextLine());
+                    int patientId = Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Patient Name: ");
                     String patientName = scanner.nextLine();
 
                     System.out.print("Enter Age: ");
-                    int age =
-                            Integer.parseInt(scanner.nextLine());
+                    int age = Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Contact Number: ");
                     String contactNumber = scanner.nextLine();
@@ -86,8 +84,7 @@ public class Main {
                     System.out.println("\n--- Search Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int searchId =
-                            Integer.parseInt(scanner.nextLine());
+                    int searchId = Integer.parseInt(scanner.nextLine());
 
                     Patient foundPatient =
                             patientBST.search(searchId);
@@ -110,8 +107,7 @@ public class Main {
                     System.out.println("\n--- Delete Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int deleteId =
-                            Integer.parseInt(scanner.nextLine());
+                    int deleteId = Integer.parseInt(scanner.nextLine());
 
                     Patient patientToDelete =
                             patientBST.search(deleteId);
@@ -377,6 +373,44 @@ public class Main {
                     } else {
 
                         System.out.println("Visit not found.");
+                    }
+
+                    break;
+                }
+
+                case 13: {
+
+                    System.out.println(
+                            "\n--- Remove Patient Visit ---"
+                    );
+
+                    System.out.print("Enter Patient ID: ");
+                    int removeVisitPatientId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    Patient removeVisitPatient =
+                            patientBST.search(removeVisitPatientId);
+
+                    if (removeVisitPatient == null) {
+
+                        System.out.println("Patient not found.");
+                        break;
+                    }
+
+                    System.out.print("Enter Visit ID: ");
+                    int removeVisitId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    boolean removed =
+                            removeVisitPatient
+                                    .getVisitHistory()
+                                    .removeVisit(removeVisitId);
+
+                    if (removed) {
+
+                        System.out.println(
+                                "Patient visit removed successfully."
+                        );
                     }
 
                     break;
