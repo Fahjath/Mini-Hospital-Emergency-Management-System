@@ -110,21 +110,45 @@ public class Main {
         treatmentStack.push(t2);
         treatmentStack.push(t3);
 
-        // Display all treatment records
         treatmentStack.displayStack();
 
-        // Remove latest treatment
         System.out.println("\nRemoving latest treatment:");
         treatmentStack.pop();
 
-        // Display remaining treatment records
         treatmentStack.displayStack();
-        
+
+
+        // ---------------- EMPTY STACK TEST ----------------
+
         System.out.println("\nEmpty Stack Test:");
 
         treatmentStack.pop();
         treatmentStack.pop();
         treatmentStack.pop();
+
+
+        // ---------------- PATIENT VISIT HISTORY TEST ----------------
+
+        Visit v1 = new Visit(
+                501,
+                "2026-07-10",
+                "Dr. Perera",
+                "High Fever",
+                "Medication"
+        );
+
+        Visit v2 = new Visit(
+                502,
+                "2026-08-22",
+                "Dr. Silva",
+                "Chest Discomfort",
+                "ECG Examination"
+        );
+
+        System.out.println("\nPatient Visit History Test:");
+
+        // Add visits to John Silva's personal visit history
+        p1.getVisitHistory().addVisit(v1);
+        p1.getVisitHistory().addVisit(v2);
     }
-    
 }
