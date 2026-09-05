@@ -47,7 +47,7 @@ public class Main {
             System.out.println("\nPatient not found.");
         }
 
-        // Display BST in ascending order
+        // Display patients in ascending Patient ID order
         patientBST.displayInOrder();
 
         // Create Emergency Queue
@@ -55,9 +55,13 @@ public class Main {
 
         System.out.println("\nEmergency Queue Test:");
 
-        // Add patients to emergency queue
+        // Add patients to queue
         emergencyQueue.enqueue(p1);
         emergencyQueue.enqueue(p2);
         emergencyQueue.enqueue(p3);
+
+        // Remove next patient for treatment
+        System.out.println("\nCalling next patient for treatment:");
+        emergencyQueue.dequeue();
     }
 }

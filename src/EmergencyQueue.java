@@ -26,4 +26,28 @@ public class EmergencyQueue {
                 + " added to the emergency queue."
         );
     }
+
+    // Remove the next patient from the emergency queue
+    public Patient dequeue() {
+
+        if (front == null) {
+            System.out.println("Emergency queue is empty.");
+            return null;
+        }
+
+        Patient patientToTreat = front.patient;
+
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+
+        System.out.println(
+                patientToTreat.getPatientName()
+                + " removed from the emergency queue for treatment."
+        );
+
+        return patientToTreat;
+    }
 }
