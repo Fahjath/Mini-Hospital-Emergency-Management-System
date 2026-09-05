@@ -45,16 +45,8 @@ public class Main {
             System.out.println("\nPatient not found.");
         }
 
-        // Delete patient
-        patientBST.delete(1002);
+        patientBST.displayInOrder();
 
-        // Search again after deletion
-        Patient deletedPatient = patientBST.search(1002);
-
-        if (deletedPatient == null) {
-            System.out.println("\nPatient 1002 deleted successfully.");
-        } else {
-            System.out.println("\nPatient deletion failed.");
-        }
+        
     }
 }

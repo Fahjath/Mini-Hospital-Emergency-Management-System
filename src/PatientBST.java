@@ -115,4 +115,28 @@ public class PatientBST {
 
         return node;
     }
+    
+ // Display all patients in ascending order of Patient ID
+    public void displayInOrder() {
+
+        if (root == null) {
+            System.out.println("No patient records available.");
+            return;
+        }
+
+        System.out.println("\nPatients in ascending order of Patient ID:");
+        inOrderRecursive(root);
+    }
+
+    private void inOrderRecursive(PatientNode current) {
+
+        if (current != null) {
+
+            inOrderRecursive(current.left);
+
+            System.out.println(current.patient);
+
+            inOrderRecursive(current.right);
+        }
+    }
 }
