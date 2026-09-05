@@ -126,6 +126,15 @@ public class Main {
                     break;
 
 
+                case 4:
+
+                    System.out.println("\n--- Display All Patients ---");
+
+                    patientBST.displayInOrder();
+
+                    break;
+
+
                 case 0:
 
                     System.out.println(
