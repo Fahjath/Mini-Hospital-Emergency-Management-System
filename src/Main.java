@@ -109,9 +109,7 @@ public class Main {
 
                         patientBST.delete(deleteId);
 
-                        System.out.println(
-                                "Patient deleted successfully."
-                        );
+                        System.out.println("Patient deleted successfully.");
 
                     } else {
 
@@ -123,9 +121,7 @@ public class Main {
 
                 case 4: {
 
-                    System.out.println(
-                            "\n--- Display All Patients ---"
-                    );
+                    System.out.println("\n--- Display All Patients ---");
 
                     patientBST.displayInOrder();
 
@@ -258,6 +254,17 @@ public class Main {
 
                         System.out.println(removedTreatment);
                     }
+
+                    break;
+                }
+
+                case 10: {
+
+                    System.out.println(
+                            "\n--- Display Treatment History ---"
+                    );
+
+                    treatmentStack.displayStack();
 
                     break;
                 }
