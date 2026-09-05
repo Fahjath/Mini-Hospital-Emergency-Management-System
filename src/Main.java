@@ -1,189 +1,130 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        // ---------------- CREATE SAMPLE PATIENTS ----------------
-
-        Patient p1 = new Patient(
-                1005,
-                "John Silva",
-                45,
-                "0771234567",
-                "Chest Pain"
-        );
-
-        Patient p2 = new Patient(
-                1002,
-                "Mary Perera",
-                32,
-                "0712345678",
-                "Fever"
-        );
-
-        Patient p3 = new Patient(
-                1008,
-                "David Fernando",
-                28,
-                "0759876543",
-                "Injury"
-        );
-
-
-        // ---------------- BST TEST ----------------
+        Scanner scanner = new Scanner(System.in);
 
         PatientBST patientBST = new PatientBST();
-
-        patientBST.insert(p1);
-        patientBST.insert(p2);
-        patientBST.insert(p3);
-
-        System.out.println("Patients inserted successfully.");
-
-        Patient foundPatient = patientBST.search(1002);
-
-        if (foundPatient != null) {
-            System.out.println("\nPatient found:");
-            System.out.println(foundPatient);
-        } else {
-            System.out.println("\nPatient not found.");
-        }
-
-        patientBST.displayInOrder();
-
-
-        // ---------------- EMERGENCY QUEUE TEST ----------------
-
         EmergencyQueue emergencyQueue = new EmergencyQueue();
-
-        System.out.println("\nEmergency Queue Test:");
-
-        emergencyQueue.enqueue(p1);
-        emergencyQueue.enqueue(p2);
-        emergencyQueue.enqueue(p3);
-
-        System.out.println("\nCalling next patient for treatment:");
-        emergencyQueue.dequeue();
-
-        emergencyQueue.displayQueue();
-
-
-        // ---------------- EMPTY QUEUE TEST ----------------
-
-        System.out.println("\nEmpty Queue Test:");
-
-        emergencyQueue.dequeue();
-        emergencyQueue.dequeue();
-        emergencyQueue.dequeue();
-
-
-        // ---------------- TREATMENT STACK TEST ----------------
-
         TreatmentStack treatmentStack = new TreatmentStack();
 
-        TreatmentRecord t1 = new TreatmentRecord(
-                1,
-                1005,
-                "John Silva",
-                "Dr. Perera",
-                "ECG Examination"
-        );
+        int choice;
 
-        TreatmentRecord t2 = new TreatmentRecord(
-                2,
-                1002,
-                "Mary Perera",
-                "Dr. Fernando",
-                "Fever Medication"
-        );
+        do {
 
-        TreatmentRecord t3 = new TreatmentRecord(
-                3,
-                1008,
-                "David Fernando",
-                "Dr. Silva",
-                "Wound Dressing"
-        );
+            System.out.println("\n==========================================");
+            System.out.println(" MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
+            System.out.println("==========================================");
 
-        System.out.println("\nTreatment Stack Test:");
+            System.out.println("1. Register New Patient");
+            System.out.println("2. Search Patient");
+            System.out.println("3. Delete Patient");
+            System.out.println("4. Display All Patients");
 
-        treatmentStack.push(t1);
-        treatmentStack.push(t2);
-        treatmentStack.push(t3);
+            System.out.println("5. Add Patient to Emergency Queue");
+            System.out.println("6. Treat Next Emergency Patient");
+            System.out.println("7. Display Waiting Patients");
 
-        treatmentStack.displayStack();
+            System.out.println("8. Add Completed Treatment");
+            System.out.println("9. Remove Latest Treatment");
+            System.out.println("10. Display Treatment History");
 
-        System.out.println("\nRemoving latest treatment:");
-        treatmentStack.pop();
+            System.out.println("11. Add Patient Visit");
+            System.out.println("12. Search Patient Visit");
+            System.out.println("13. Remove Patient Visit");
+            System.out.println("14. Display Patient Visit History");
 
-        treatmentStack.displayStack();
+            System.out.println("0. Exit");
 
+            System.out.print("\nEnter your choice: ");
+            choice = Integer.parseInt(scanner.nextLine());
 
-        // ---------------- EMPTY STACK TEST ----------------
+            switch (choice) {
 
-        System.out.println("\nEmpty Stack Test:");
+                case 1:
 
-        treatmentStack.pop();
-        treatmentStack.pop();
-        treatmentStack.pop();
+                    System.out.println("\n--- Register New Patient ---");
 
+                    System.out.print("Enter Patient ID: ");
+                    int patientId =
+                            Integer.parseInt(scanner.nextLine());
 
-        // ---------------- PATIENT VISIT HISTORY TEST ----------------
+                    System.out.print("Enter Patient Name: ");
+                    String patientName = scanner.nextLine();
 
-        Visit v1 = new Visit(
-                501,
-                "2026-07-10",
-                "Dr. Perera",
-                "High Fever",
-                "Medication"
-        );
+                    System.out.print("Enter Age: ");
+                    int age =
+                            Integer.parseInt(scanner.nextLine());
 
-        Visit v2 = new Visit(
-                502,
-                "2026-08-22",
-                "Dr. Silva",
-                "Chest Discomfort",
-                "ECG Examination"
-        );
+                    System.out.print("Enter Contact Number: ");
+                    String contactNumber = scanner.nextLine();
 
-        System.out.println("\nPatient Visit History Test:");
+                    System.out.print("Enter Medical Condition: ");
+                    String medicalCondition = scanner.nextLine();
 
-        p1.getVisitHistory().addVisit(v1);
-        p1.getVisitHistory().addVisit(v2);
+                    Patient newPatient = new Patient(
+                            patientId,
+                            patientName,
+                            age,
+                            contactNumber,
+                            medicalCondition
+                    );
 
+                    patientBST.insert(newPatient);
 
-        // ---------------- SEARCH VISIT TEST ----------------
+                    System.out.println(
+                            "Patient registered successfully."
+                    );
 
-        System.out.println("\nSearching Visit 502:");
-
-        Visit foundVisit = p1.getVisitHistory().searchVisit(502);
-
-        if (foundVisit != null) {
-            System.out.println("Visit found:");
-            System.out.println(foundVisit);
-        } else {
-            System.out.println("Visit not found.");
-        }
+                    break;
 
 
-        // ---------------- REMOVE VISIT TEST ----------------
+                case 2:
 
-        System.out.println("\nRemoving Visit 501:");
+                    System.out.println("\n--- Search Patient ---");
 
-        p1.getVisitHistory().removeVisit(501);
+                    System.out.print("Enter Patient ID: ");
+                    int searchId =
+                            Integer.parseInt(scanner.nextLine());
 
-        System.out.println("\nSearching Visit 501 after removal:");
+                    Patient foundPatient =
+                            patientBST.search(searchId);
 
-        Visit removedVisit = p1.getVisitHistory().searchVisit(501);
+                    if (foundPatient != null) {
 
-        if (removedVisit == null) {
-            System.out.println("Visit 501 successfully removed.");
-        } else {
-            System.out.println("Visit removal failed.");
-        }
+                        System.out.println("\nPatient found:");
+                        System.out.println(foundPatient);
+
+                    } else {
+
+                        System.out.println(
+                                "Patient not found."
+                        );
+                    }
+
+                    break;
 
 
-        // ---------------- DISPLAY VISIT HISTORY TEST ----------------
+                case 0:
 
-        p1.getVisitHistory().displayVisits();
+                    System.out.println(
+                            "Exiting Hospital Management System..."
+                    );
+
+                    break;
+
+
+                default:
+
+                    System.out.println(
+                            "Option will be implemented next."
+                    );
+            }
+
+        } while (choice != 0);
+
+        scanner.close();
     }
 }
