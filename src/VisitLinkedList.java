@@ -29,4 +29,21 @@ public class VisitLinkedList {
                 + " added to visit history."
         );
     }
+
+    // Search for a visit using Visit ID
+    public Visit searchVisit(int visitId) {
+
+        VisitNode current = head;
+
+        while (current != null) {
+
+            if (current.visit.getVisitId() == visitId) {
+                return current.visit;
+            }
+
+            current = current.next;
+        }
+
+        return null;
+    }
 }

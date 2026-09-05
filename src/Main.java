@@ -147,8 +147,21 @@ public class Main {
 
         System.out.println("\nPatient Visit History Test:");
 
-        // Add visits to John Silva's personal visit history
         p1.getVisitHistory().addVisit(v1);
         p1.getVisitHistory().addVisit(v2);
+
+
+        // ---------------- SEARCH VISIT TEST ----------------
+
+        System.out.println("\nSearching Visit 502:");
+
+        Visit foundVisit = p1.getVisitHistory().searchVisit(502);
+
+        if (foundVisit != null) {
+            System.out.println("Visit found:");
+            System.out.println(foundVisit);
+        } else {
+            System.out.println("Visit not found.");
+        }
     }
 }
