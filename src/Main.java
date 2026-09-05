@@ -48,13 +48,15 @@ public class Main {
                     System.out.println("\n--- Register New Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int patientId = Integer.parseInt(scanner.nextLine());
+                    int patientId =
+                            Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Patient Name: ");
                     String patientName = scanner.nextLine();
 
                     System.out.print("Enter Age: ");
-                    int age = Integer.parseInt(scanner.nextLine());
+                    int age =
+                            Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Contact Number: ");
                     String contactNumber = scanner.nextLine();
@@ -72,38 +74,49 @@ public class Main {
 
                     patientBST.insert(newPatient);
 
-                    System.out.println("Patient registered successfully.");
+                    System.out.println(
+                            "Patient registered successfully."
+                    );
 
                     break;
                 }
+
 
                 case 2: {
 
                     System.out.println("\n--- Search Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int searchId = Integer.parseInt(scanner.nextLine());
+                    int searchId =
+                            Integer.parseInt(scanner.nextLine());
 
-                    Patient foundPatient = patientBST.search(searchId);
+                    Patient foundPatient =
+                            patientBST.search(searchId);
 
                     if (foundPatient != null) {
+
                         System.out.println("\nPatient found:");
                         System.out.println(foundPatient);
+
                     } else {
+
                         System.out.println("Patient not found.");
                     }
 
                     break;
                 }
 
+
                 case 3: {
 
                     System.out.println("\n--- Delete Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int deleteId = Integer.parseInt(scanner.nextLine());
+                    int deleteId =
+                            Integer.parseInt(scanner.nextLine());
 
-                    Patient patientToDelete = patientBST.search(deleteId);
+                    Patient patientToDelete =
+                            patientBST.search(deleteId);
 
                     if (patientToDelete != null) {
 
@@ -121,14 +134,18 @@ public class Main {
                     break;
                 }
 
+
                 case 4: {
 
-                    System.out.println("\n--- Display All Patients ---");
+                    System.out.println(
+                            "\n--- Display All Patients ---"
+                    );
 
                     patientBST.displayInOrder();
 
                     break;
                 }
+
 
                 case 5: {
 
@@ -157,6 +174,7 @@ public class Main {
                     break;
                 }
 
+
                 case 6: {
 
                     System.out.println(
@@ -178,6 +196,7 @@ public class Main {
                     break;
                 }
 
+
                 case 7: {
 
                     System.out.println(
@@ -189,6 +208,58 @@ public class Main {
                     break;
                 }
 
+
+                case 8: {
+
+                    System.out.println(
+                            "\n--- Add Completed Treatment ---"
+                    );
+
+                    System.out.print("Enter Patient ID: ");
+                    int treatmentPatientId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    Patient treatmentPatient =
+                            patientBST.search(treatmentPatientId);
+
+                    if (treatmentPatient == null) {
+
+                        System.out.println(
+                                "Patient not found. Please register the patient first."
+                        );
+
+                        break;
+                    }
+
+                    System.out.print("Enter Treatment ID: ");
+                    int treatmentId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    System.out.print("Enter Doctor Name: ");
+                    String doctorName = scanner.nextLine();
+
+                    System.out.print("Enter Treatment Details: ");
+                    String treatmentDetails = scanner.nextLine();
+
+                    TreatmentRecord treatmentRecord =
+                            new TreatmentRecord(
+                                    treatmentId,
+                                    treatmentPatient.getPatientId(),
+                                    treatmentPatient.getPatientName(),
+                                    doctorName,
+                                    treatmentDetails
+                            );
+
+                    treatmentStack.push(treatmentRecord);
+
+                    System.out.println(
+                            "Completed treatment recorded successfully."
+                    );
+
+                    break;
+                }
+
+
                 case 0: {
 
                     System.out.println(
@@ -197,6 +268,7 @@ public class Main {
 
                     break;
                 }
+
 
                 default: {
 
