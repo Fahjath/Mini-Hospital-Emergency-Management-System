@@ -43,18 +43,20 @@ public class Main {
 
             switch (choice) {
 
-                case 1:
+                case 1: {
 
                     System.out.println("\n--- Register New Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int patientId = Integer.parseInt(scanner.nextLine());
+                    int patientId =
+                            Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Patient Name: ");
                     String patientName = scanner.nextLine();
 
                     System.out.print("Enter Age: ");
-                    int age = Integer.parseInt(scanner.nextLine());
+                    int age =
+                            Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Contact Number: ");
                     String contactNumber = scanner.nextLine();
@@ -72,19 +74,24 @@ public class Main {
 
                     patientBST.insert(newPatient);
 
-                    System.out.println("Patient registered successfully.");
+                    System.out.println(
+                            "Patient registered successfully."
+                    );
 
                     break;
+                }
 
 
-                case 2:
+                case 2: {
 
                     System.out.println("\n--- Search Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int searchId = Integer.parseInt(scanner.nextLine());
+                    int searchId =
+                            Integer.parseInt(scanner.nextLine());
 
-                    Patient foundPatient = patientBST.search(searchId);
+                    Patient foundPatient =
+                            patientBST.search(searchId);
 
                     if (foundPatient != null) {
 
@@ -97,16 +104,19 @@ public class Main {
                     }
 
                     break;
+                }
 
 
-                case 3:
+                case 3: {
 
                     System.out.println("\n--- Delete Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int deleteId = Integer.parseInt(scanner.nextLine());
+                    int deleteId =
+                            Integer.parseInt(scanner.nextLine());
 
-                    Patient patientToDelete = patientBST.search(deleteId);
+                    Patient patientToDelete =
+                            patientBST.search(deleteId);
 
                     if (patientToDelete != null) {
 
@@ -122,20 +132,24 @@ public class Main {
                     }
 
                     break;
+                }
 
 
-                case 4:
+                case 4: {
 
                     System.out.println("\n--- Display All Patients ---");
 
                     patientBST.displayInOrder();
 
                     break;
+                }
 
 
-                case 5:
+                case 5: {
 
-                    System.out.println("\n--- Add Patient to Emergency Queue ---");
+                    System.out.println(
+                            "\n--- Add Patient to Emergency Queue ---"
+                    );
 
                     System.out.print("Enter Patient ID: ");
                     int emergencyPatientId =
@@ -156,22 +170,47 @@ public class Main {
                     }
 
                     break;
+                }
 
 
-                case 0:
+                case 6: {
+
+                    System.out.println(
+                            "\n--- Treat Next Emergency Patient ---"
+                    );
+
+                    Patient nextPatient =
+                            emergencyQueue.dequeue();
+
+                    if (nextPatient != null) {
+
+                        System.out.println(
+                                "\nPatient ready for treatment:"
+                        );
+
+                        System.out.println(nextPatient);
+                    }
+
+                    break;
+                }
+
+
+                case 0: {
 
                     System.out.println(
                             "Exiting Hospital Management System..."
                     );
 
                     break;
+                }
 
 
-                default:
+                default: {
 
                     System.out.println(
                             "Option will be implemented next."
                     );
+                }
             }
 
         } while (choice != 0);
