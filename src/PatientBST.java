@@ -28,4 +28,27 @@ public class PatientBST {
 
         return current;
     }
+
+
+public Patient search(int patientId) {
+    return searchRecursive(root, patientId);
 }
+
+private Patient searchRecursive(PatientNode current, int patientId) {
+
+    if (current == null) {
+        return null;
+    }
+
+    if (patientId == current.patient.getPatientId()) {
+        return current.patient;
+    }
+
+    if (patientId < current.patient.getPatientId()) {
+        return searchRecursive(current.left, patientId);
+    }
+
+    return searchRecursive(current.right, patientId);
+}
+}
+
