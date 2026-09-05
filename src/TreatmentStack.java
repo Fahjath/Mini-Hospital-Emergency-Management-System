@@ -19,4 +19,24 @@ public class TreatmentStack {
                 + " added to treatment history."
         );
     }
+
+    // Remove the most recently completed treatment record
+    public TreatmentRecord pop() {
+
+        if (top == null) {
+            System.out.println("Treatment stack is empty.");
+            return null;
+        }
+
+        TreatmentRecord removedRecord = top.treatmentRecord;
+
+        top = top.next;
+
+        System.out.println(
+                "Treatment " + removedRecord.getTreatmentId()
+                + " removed from treatment history."
+        );
+
+        return removedRecord;
+    }
 }
