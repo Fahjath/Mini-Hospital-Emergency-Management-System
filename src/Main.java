@@ -73,8 +73,6 @@ public class Main {
 
         emergencyQueue.dequeue();
         emergencyQueue.dequeue();
-
-        // Try to remove from empty queue
         emergencyQueue.dequeue();
 
 
@@ -108,13 +106,25 @@ public class Main {
 
         System.out.println("\nTreatment Stack Test:");
 
-        // Push completed treatment records
         treatmentStack.push(t1);
         treatmentStack.push(t2);
         treatmentStack.push(t3);
 
-        // Pop most recently completed treatment
+        // Display all treatment records
+        treatmentStack.displayStack();
+
+        // Remove latest treatment
         System.out.println("\nRemoving latest treatment:");
         treatmentStack.pop();
+
+        // Display remaining treatment records
+        treatmentStack.displayStack();
+        
+        System.out.println("\nEmpty Stack Test:");
+
+        treatmentStack.pop();
+        treatmentStack.pop();
+        treatmentStack.pop();
     }
+    
 }

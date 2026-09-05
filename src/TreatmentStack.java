@@ -39,4 +39,28 @@ public class TreatmentStack {
 
         return removedRecord;
     }
+
+    // Display all treatment records
+    public void displayStack() {
+
+        if (top == null) {
+            System.out.println("Treatment stack is empty.");
+            return;
+        }
+
+        System.out.println("\nCompleted Treatment Records:");
+
+        StackNode current = top;
+        int number = 1;
+
+        while (current != null) {
+
+            System.out.println(
+                    number + ". " + current.treatmentRecord
+            );
+
+            current = current.next;
+            number++;
+        }
+    }
 }
