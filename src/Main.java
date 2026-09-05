@@ -163,5 +163,22 @@ public class Main {
         } else {
             System.out.println("Visit not found.");
         }
+
+
+        // ---------------- REMOVE VISIT TEST ----------------
+
+        System.out.println("\nRemoving Visit 501:");
+
+        p1.getVisitHistory().removeVisit(501);
+
+        System.out.println("\nSearching Visit 501 after removal:");
+
+        Visit removedVisit = p1.getVisitHistory().searchVisit(501);
+
+        if (removedVisit == null) {
+            System.out.println("Visit 501 successfully removed.");
+        } else {
+            System.out.println("Visit removal failed.");
+        }
     }
 }
