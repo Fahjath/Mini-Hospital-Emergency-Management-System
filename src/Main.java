@@ -2,8 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Create Binary Search Tree
         PatientBST patientBST = new PatientBST();
 
+        // Create sample patients
         Patient p1 = new Patient(
                 1005,
                 "John Silva",
@@ -28,7 +30,7 @@ public class Main {
                 "Injury"
         );
 
-        // Insert patients
+        // Insert patients into BST
         patientBST.insert(p1);
         patientBST.insert(p2);
         patientBST.insert(p3);
@@ -45,8 +47,17 @@ public class Main {
             System.out.println("\nPatient not found.");
         }
 
+        // Display BST in ascending order
         patientBST.displayInOrder();
 
-        
+        // Create Emergency Queue
+        EmergencyQueue emergencyQueue = new EmergencyQueue();
+
+        System.out.println("\nEmergency Queue Test:");
+
+        // Add patients to emergency queue
+        emergencyQueue.enqueue(p1);
+        emergencyQueue.enqueue(p2);
+        emergencyQueue.enqueue(p3);
     }
 }
