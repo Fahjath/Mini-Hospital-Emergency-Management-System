@@ -50,6 +50,16 @@ public class Main {
                     System.out.print("Enter Patient ID: ");
                     int patientId = Integer.parseInt(scanner.nextLine());
 
+                    // Prevent duplicate Patient IDs
+                    if (patientBST.search(patientId) != null) {
+
+                        System.out.println(
+                                "Patient ID already exists. Please use a different Patient ID."
+                        );
+
+                        break;
+                    }
+
                     System.out.print("Enter Patient Name: ");
                     String patientName = scanner.nextLine();
 
