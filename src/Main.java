@@ -48,15 +48,13 @@ public class Main {
                     System.out.println("\n--- Register New Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int patientId =
-                            Integer.parseInt(scanner.nextLine());
+                    int patientId = Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Patient Name: ");
                     String patientName = scanner.nextLine();
 
                     System.out.print("Enter Age: ");
-                    int age =
-                            Integer.parseInt(scanner.nextLine());
+                    int age = Integer.parseInt(scanner.nextLine());
 
                     System.out.print("Enter Contact Number: ");
                     String contactNumber = scanner.nextLine();
@@ -74,49 +72,38 @@ public class Main {
 
                     patientBST.insert(newPatient);
 
-                    System.out.println(
-                            "Patient registered successfully."
-                    );
+                    System.out.println("Patient registered successfully.");
 
                     break;
                 }
-
 
                 case 2: {
 
                     System.out.println("\n--- Search Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int searchId =
-                            Integer.parseInt(scanner.nextLine());
+                    int searchId = Integer.parseInt(scanner.nextLine());
 
-                    Patient foundPatient =
-                            patientBST.search(searchId);
+                    Patient foundPatient = patientBST.search(searchId);
 
                     if (foundPatient != null) {
-
                         System.out.println("\nPatient found:");
                         System.out.println(foundPatient);
-
                     } else {
-
                         System.out.println("Patient not found.");
                     }
 
                     break;
                 }
 
-
                 case 3: {
 
                     System.out.println("\n--- Delete Patient ---");
 
                     System.out.print("Enter Patient ID: ");
-                    int deleteId =
-                            Integer.parseInt(scanner.nextLine());
+                    int deleteId = Integer.parseInt(scanner.nextLine());
 
-                    Patient patientToDelete =
-                            patientBST.search(deleteId);
+                    Patient patientToDelete = patientBST.search(deleteId);
 
                     if (patientToDelete != null) {
 
@@ -134,7 +121,6 @@ public class Main {
                     break;
                 }
 
-
                 case 4: {
 
                     System.out.println(
@@ -145,7 +131,6 @@ public class Main {
 
                     break;
                 }
-
 
                 case 5: {
 
@@ -174,7 +159,6 @@ public class Main {
                     break;
                 }
 
-
                 case 6: {
 
                     System.out.println(
@@ -196,7 +180,6 @@ public class Main {
                     break;
                 }
 
-
                 case 7: {
 
                     System.out.println(
@@ -207,7 +190,6 @@ public class Main {
 
                     break;
                 }
-
 
                 case 8: {
 
@@ -259,6 +241,26 @@ public class Main {
                     break;
                 }
 
+                case 9: {
+
+                    System.out.println(
+                            "\n--- Remove Latest Treatment ---"
+                    );
+
+                    TreatmentRecord removedTreatment =
+                            treatmentStack.pop();
+
+                    if (removedTreatment != null) {
+
+                        System.out.println(
+                                "\nLatest treatment removed:"
+                        );
+
+                        System.out.println(removedTreatment);
+                    }
+
+                    break;
+                }
 
                 case 0: {
 
@@ -268,7 +270,6 @@ public class Main {
 
                     break;
                 }
-
 
                 default: {
 
