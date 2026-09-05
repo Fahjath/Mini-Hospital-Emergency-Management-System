@@ -416,6 +416,38 @@ public class Main {
                     break;
                 }
 
+                case 14: {
+
+                    System.out.println(
+                            "\n--- Display Patient Visit History ---"
+                    );
+
+                    System.out.print("Enter Patient ID: ");
+                    int displayVisitPatientId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    Patient displayVisitPatient =
+                            patientBST.search(displayVisitPatientId);
+
+                    if (displayVisitPatient == null) {
+
+                        System.out.println("Patient not found.");
+                        break;
+                    }
+
+                    System.out.println(
+                            "\nVisit History for "
+                                    + displayVisitPatient.getPatientName()
+                                    + ":"
+                    );
+
+                    displayVisitPatient
+                            .getVisitHistory()
+                            .displayVisits();
+
+                    break;
+                }
+
                 case 0: {
 
                     System.out.println(
@@ -428,7 +460,7 @@ public class Main {
                 default: {
 
                     System.out.println(
-                            "Option will be implemented next."
+                            "Invalid option. Please select a number from 0 to 14."
                     );
                 }
             }
