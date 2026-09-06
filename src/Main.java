@@ -14,33 +14,37 @@ public class Main {
 
         do {
 
-            System.out.println("\n==========================================");
-            System.out.println(" MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
-            System.out.println("==========================================");
+            System.out.println("\n==================================================");
+            System.out.println("      MINI HOSPITAL EMERGENCY MANAGEMENT SYSTEM");
+            System.out.println("==================================================");
 
+            System.out.println("\n[ PATIENT MANAGEMENT ]");
             System.out.println("1. Register New Patient");
             System.out.println("2. Search Patient");
             System.out.println("3. Delete Patient");
             System.out.println("4. Display All Patients");
 
+            System.out.println("\n[ EMERGENCY QUEUE ]");
             System.out.println("5. Add Patient to Emergency Queue");
             System.out.println("6. Treat Next Emergency Patient");
             System.out.println("7. Display Waiting Patients");
 
+            System.out.println("\n[ TREATMENT HISTORY ]");
             System.out.println("8. Add Completed Treatment");
             System.out.println("9. Remove Latest Treatment");
             System.out.println("10. Display Treatment History");
 
+            System.out.println("\n[ PATIENT VISIT HISTORY ]");
             System.out.println("11. Add Patient Visit");
             System.out.println("12. Search Patient Visit");
             System.out.println("13. Remove Patient Visit");
             System.out.println("14. Display Patient Visit History");
 
-            System.out.println("0. Exit");
+            System.out.println("\n0. Exit");
 
-            System.out.print("\nEnter your choice: ");
+            System.out.println("--------------------------------------------------");
+            System.out.print("Enter your choice: ");
 
-            // Handle invalid menu input
             try {
 
                 choice = Integer.parseInt(scanner.nextLine());
@@ -48,7 +52,7 @@ public class Main {
             } catch (NumberFormatException e) {
 
                 System.out.println(
-                        "Invalid input. Please enter a number from 0 to 14."
+                        "\n[ERROR] Invalid input. Please enter a number from 0 to 14."
                 );
 
                 choice = -1;
@@ -57,23 +61,23 @@ public class Main {
 
             switch (choice) {
 
-                // ----------------------------------------
-                // 1. REGISTER NEW PATIENT
-                // ----------------------------------------
-
                 case 1: {
 
-                    System.out.println("\n--- Register New Patient ---");
+                    System.out.println("\n==================================");
+                    System.out.println("       REGISTER NEW PATIENT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int patientId =
                             Integer.parseInt(scanner.nextLine());
 
-                    // Prevent duplicate Patient IDs
                     if (patientBST.search(patientId) != null) {
 
                         System.out.println(
-                                "Patient ID already exists. Please use a different Patient ID."
+                                "\n[WARNING] Patient ID already exists."
+                        );
+                        System.out.println(
+                                "Please use a different Patient ID."
                         );
 
                         break;
@@ -92,31 +96,30 @@ public class Main {
                     System.out.print("Enter Medical Condition: ");
                     String medicalCondition = scanner.nextLine();
 
-                    Patient newPatient = new Patient(
-                            patientId,
-                            patientName,
-                            age,
-                            contactNumber,
-                            medicalCondition
-                    );
+                    Patient newPatient =
+                            new Patient(
+                                    patientId,
+                                    patientName,
+                                    age,
+                                    contactNumber,
+                                    medicalCondition
+                            );
 
                     patientBST.insert(newPatient);
 
                     System.out.println(
-                            "Patient registered successfully."
+                            "\n[SUCCESS] Patient registered successfully."
                     );
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 2. SEARCH PATIENT
-                // ----------------------------------------
-
                 case 2: {
 
-                    System.out.println("\n--- Search Patient ---");
+                    System.out.println("\n==================================");
+                    System.out.println("          SEARCH PATIENT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int searchId =
@@ -128,24 +131,25 @@ public class Main {
                     if (foundPatient != null) {
 
                         System.out.println("\nPatient found:");
+                        System.out.println("----------------------------------");
                         System.out.println(foundPatient);
 
                     } else {
 
-                        System.out.println("Patient not found.");
+                        System.out.println(
+                                "\n[INFO] Patient not found."
+                        );
                     }
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 3. DELETE PATIENT
-                // ----------------------------------------
-
                 case 3: {
 
-                    System.out.println("\n--- Delete Patient ---");
+                    System.out.println("\n==================================");
+                    System.out.println("          DELETE PATIENT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int deleteId =
@@ -159,27 +163,25 @@ public class Main {
                         patientBST.delete(deleteId);
 
                         System.out.println(
-                                "Patient deleted successfully."
+                                "\n[SUCCESS] Patient deleted successfully."
                         );
 
                     } else {
 
-                        System.out.println("Patient not found.");
+                        System.out.println(
+                                "\n[INFO] Patient not found."
+                        );
                     }
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 4. DISPLAY ALL PATIENTS
-                // ----------------------------------------
-
                 case 4: {
 
-                    System.out.println(
-                            "\n--- Display All Patients ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("       ALL PATIENT RECORDS");
+                    System.out.println("==================================");
 
                     patientBST.displayInOrder();
 
@@ -187,15 +189,11 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 5. ADD PATIENT TO EMERGENCY QUEUE
-                // ----------------------------------------
-
                 case 5: {
 
-                    System.out.println(
-                            "\n--- Add Patient to Emergency Queue ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("      ADD TO EMERGENCY QUEUE");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int emergencyPatientId =
@@ -211,7 +209,11 @@ public class Main {
                     } else {
 
                         System.out.println(
-                                "Patient not found. Please register the patient first."
+                                "\n[INFO] Patient not found."
+                        );
+
+                        System.out.println(
+                                "Please register the patient first."
                         );
                     }
 
@@ -219,15 +221,11 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 6. TREAT NEXT EMERGENCY PATIENT
-                // ----------------------------------------
-
                 case 6: {
 
-                    System.out.println(
-                            "\n--- Treat Next Emergency Patient ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("     TREAT NEXT EMERGENCY PATIENT");
+                    System.out.println("==================================");
 
                     Patient nextPatient =
                             emergencyQueue.dequeue();
@@ -238,6 +236,7 @@ public class Main {
                                 "\nPatient ready for treatment:"
                         );
 
+                        System.out.println("----------------------------------");
                         System.out.println(nextPatient);
                     }
 
@@ -245,15 +244,11 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 7. DISPLAY WAITING PATIENTS
-                // ----------------------------------------
-
                 case 7: {
 
-                    System.out.println(
-                            "\n--- Display Waiting Patients ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("        WAITING PATIENTS");
+                    System.out.println("==================================");
 
                     emergencyQueue.displayQueue();
 
@@ -261,15 +256,11 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 8. ADD COMPLETED TREATMENT
-                // ----------------------------------------
-
                 case 8: {
 
-                    System.out.println(
-                            "\n--- Add Completed Treatment ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("      ADD COMPLETED TREATMENT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int treatmentPatientId =
@@ -281,7 +272,11 @@ public class Main {
                     if (treatmentPatient == null) {
 
                         System.out.println(
-                                "Patient not found. Please register the patient first."
+                                "\n[INFO] Patient not found."
+                        );
+
+                        System.out.println(
+                                "Please register the patient first."
                         );
 
                         break;
@@ -311,22 +306,18 @@ public class Main {
                     treatmentStack.push(treatmentRecord);
 
                     System.out.println(
-                            "Completed treatment recorded successfully."
+                            "\n[SUCCESS] Completed treatment recorded successfully."
                     );
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 9. REMOVE LATEST TREATMENT
-                // ----------------------------------------
-
                 case 9: {
 
-                    System.out.println(
-                            "\n--- Remove Latest Treatment ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("       REMOVE LATEST TREATMENT");
+                    System.out.println("==================================");
 
                     TreatmentRecord removedTreatment =
                             treatmentStack.pop();
@@ -337,24 +328,19 @@ public class Main {
                                 "\nLatest treatment removed:"
                         );
 
-                        System.out.println(
-                                removedTreatment
-                        );
+                        System.out.println("----------------------------------");
+                        System.out.println(removedTreatment);
                     }
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 10. DISPLAY TREATMENT HISTORY
-                // ----------------------------------------
-
                 case 10: {
 
-                    System.out.println(
-                            "\n--- Display Treatment History ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("        TREATMENT HISTORY");
+                    System.out.println("==================================");
 
                     treatmentStack.displayStack();
 
@@ -362,15 +348,11 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 11. ADD PATIENT VISIT
-                // ----------------------------------------
-
                 case 11: {
 
-                    System.out.println(
-                            "\n--- Add Patient Visit ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("         ADD PATIENT VISIT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int visitPatientId =
@@ -382,7 +364,11 @@ public class Main {
                     if (visitPatient == null) {
 
                         System.out.println(
-                                "Patient not found. Please register the patient first."
+                                "\n[INFO] Patient not found."
+                        );
+
+                        System.out.println(
+                                "Please register the patient first."
                         );
 
                         break;
@@ -408,49 +394,44 @@ public class Main {
                     String visitTreatment =
                             scanner.nextLine();
 
-                    Visit newVisit = new Visit(
-                            visitId,
-                            visitDate,
-                            visitDoctorName,
-                            diagnosis,
-                            visitTreatment
-                    );
+                    Visit newVisit =
+                            new Visit(
+                                    visitId,
+                                    visitDate,
+                                    visitDoctorName,
+                                    diagnosis,
+                                    visitTreatment
+                            );
 
                     visitPatient
                             .getVisitHistory()
                             .addVisit(newVisit);
 
                     System.out.println(
-                            "Patient visit recorded successfully."
+                            "\n[SUCCESS] Patient visit recorded successfully."
                     );
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // 12. SEARCH PATIENT VISIT
-                // ----------------------------------------
-
                 case 12: {
 
-                    System.out.println(
-                            "\n--- Search Patient Visit ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("        SEARCH PATIENT VISIT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int searchVisitPatientId =
                             Integer.parseInt(scanner.nextLine());
 
                     Patient searchVisitPatient =
-                            patientBST.search(
-                                    searchVisitPatientId
-                            );
+                            patientBST.search(searchVisitPatientId);
 
                     if (searchVisitPatient == null) {
 
                         System.out.println(
-                                "Patient not found."
+                                "\n[INFO] Patient not found."
                         );
 
                         break;
@@ -463,24 +444,18 @@ public class Main {
                     Visit searchedVisit =
                             searchVisitPatient
                                     .getVisitHistory()
-                                    .searchVisit(
-                                            searchVisitId
-                                    );
+                                    .searchVisit(searchVisitId);
 
                     if (searchedVisit != null) {
 
-                        System.out.println(
-                                "\nVisit found:"
-                        );
-
-                        System.out.println(
-                                searchedVisit
-                        );
+                        System.out.println("\nVisit found:");
+                        System.out.println("----------------------------------");
+                        System.out.println(searchedVisit);
 
                     } else {
 
                         System.out.println(
-                                "Visit not found."
+                                "\n[INFO] Visit not found."
                         );
                     }
 
@@ -488,29 +463,23 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 13. REMOVE PATIENT VISIT
-                // ----------------------------------------
-
                 case 13: {
 
-                    System.out.println(
-                            "\n--- Remove Patient Visit ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("        REMOVE PATIENT VISIT");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int removeVisitPatientId =
                             Integer.parseInt(scanner.nextLine());
 
                     Patient removeVisitPatient =
-                            patientBST.search(
-                                    removeVisitPatientId
-                            );
+                            patientBST.search(removeVisitPatientId);
 
                     if (removeVisitPatient == null) {
 
                         System.out.println(
-                                "Patient not found."
+                                "\n[INFO] Patient not found."
                         );
 
                         break;
@@ -523,14 +492,12 @@ public class Main {
                     boolean removed =
                             removeVisitPatient
                                     .getVisitHistory()
-                                    .removeVisit(
-                                            removeVisitId
-                                    );
+                                    .removeVisit(removeVisitId);
 
                     if (removed) {
 
                         System.out.println(
-                                "Patient visit removed successfully."
+                                "\n[SUCCESS] Patient visit removed successfully."
                         );
                     }
 
@@ -538,29 +505,23 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 14. DISPLAY PATIENT VISIT HISTORY
-                // ----------------------------------------
-
                 case 14: {
 
-                    System.out.println(
-                            "\n--- Display Patient Visit History ---"
-                    );
+                    System.out.println("\n==================================");
+                    System.out.println("       PATIENT VISIT HISTORY");
+                    System.out.println("==================================");
 
                     System.out.print("Enter Patient ID: ");
                     int displayVisitPatientId =
                             Integer.parseInt(scanner.nextLine());
 
                     Patient displayVisitPatient =
-                            patientBST.search(
-                                    displayVisitPatientId
-                            );
+                            patientBST.search(displayVisitPatientId);
 
                     if (displayVisitPatient == null) {
 
                         System.out.println(
-                                "Patient not found."
+                                "\n[INFO] Patient not found."
                         );
 
                         break;
@@ -568,8 +529,7 @@ public class Main {
 
                     System.out.println(
                             "\nVisit History for "
-                                    + displayVisitPatient
-                                            .getPatientName()
+                                    + displayVisitPatient.getPatientName()
                                     + ":"
                     );
 
@@ -581,28 +541,20 @@ public class Main {
                 }
 
 
-                // ----------------------------------------
-                // 0. EXIT
-                // ----------------------------------------
-
                 case 0: {
 
-                    System.out.println(
-                            "Exiting Hospital Management System..."
-                    );
+                    System.out.println("\n==================================================");
+                    System.out.println("        HOSPITAL MANAGEMENT SYSTEM CLOSED");
+                    System.out.println("==================================================");
 
                     break;
                 }
 
 
-                // ----------------------------------------
-                // INVALID MENU OPTION
-                // ----------------------------------------
-
                 default: {
 
                     System.out.println(
-                            "Invalid option. Please select a number from 0 to 14."
+                            "\n[ERROR] Invalid option. Please select a number from 0 to 14."
                     );
                 }
             }
